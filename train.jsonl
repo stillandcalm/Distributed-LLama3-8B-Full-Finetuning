@@ -1,0 +1,6 @@
+{"input": "What is 23 + 58?", 
+ "trace": "Step 1: Add the ones digits: 3 + 8 = 11 → write 1, carry 1.\nStep 2: Add the tens digits plus carry: 2 + 5 + 1 = 8.\nSo the result is 81.", 
+ "answer": "81"}
+{"input": "If five people each get 3 apples, how many apples in total?", 
+ "trace": "Multiply number of people by apples each: 5 × 3 = 15 apples.", 
+ "answer": "15"}
