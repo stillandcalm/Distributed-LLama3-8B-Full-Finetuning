@@ -1,5 +1,8 @@
 LLama3-8B Full Fine-Tuning with DeepSpeed
 
+Infra used: runpod.io
+Used two GPU nodes in the cluster. 8 GPUs per node.
+
 Overview
 This guide walks you through the process of performing full fine-tuning of the LLaMA-3-8B language model on multiple GPU machines using DeepSpeed. You will learn how to:
 1. Prepare your environment and dependencies.
