@@ -72,7 +72,7 @@ Edit deepspeed_config.json to tune DeepSpeed's Zero Redundancy Optimizer (ZeRO) 
   "fp16": { "enabled": true }
 }
 
-Refer to DeepSpeed documentation for advanced options citeturn0file0.
+Refer to DeepSpeed documentation for advanced options.
 
 Launching Distributed Training:
 
@@ -96,7 +96,7 @@ $ deepspeed \
 --model_name_or_path: Hugging Face model ID or local path
 --train_file: Path to your JSONL dataset
 --output_dir: Directory to save checkpoints
---deepspeed: Path to your DeepSpeed config citeturn0file4
+--deepspeed: Path to your DeepSpeed config 
 
 Check the console logs to verify all nodes are participating.
 
@@ -119,14 +119,14 @@ $ python modelcreate.py
 This will
 Load output/checkpoint-<last>
 Save a safe-serialized model in inference-llama3-8b/
-Copy the tokenizer files alongside citeturn0file2
+Copy the tokenizer files alongside 
 
 Running Inference:
 
 Use inference.py to test your fine-tuned model.
 $ python inference.py
 
-By default, it loads inference-llama3-8b and runs a sample prompt (What is 23 + 58?). Customize the prompt or integrate this script into your application citeturn0file1.
+By default, it loads inference-llama3-8b and runs a sample prompt (What is 23 + 58?). Customize the prompt or integrate this script into your application.
 
 Troubleshooting
 
