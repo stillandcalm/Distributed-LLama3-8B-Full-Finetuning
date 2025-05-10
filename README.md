@@ -29,12 +29,12 @@ pip install deepspeed transformers datasets accelerate
 Repository Structure
 
 LLama3-8B-Full-Finetuning/
-   - deepspeed_config.json          # DeepSpeed optimization settings citeturn0file0
+   - deepspeed_config.json          # DeepSpeed optimization settings 
    - hostfile                       # SSH hostfile for multi-node configuration
    - train.jsonl                    # Training data in JSONL format
-   - train.py                       # Training script leveraging Transformers + DeepSpeed citeturn0file4
-   - modelcreate.py                 # Script to consolidate and save checkpoint for inference citeturn0file2
-   - inference.py                   # Inference script to generate text from fine-tuned model citeturn0file1
+   - train.py                       # Training script leveraging Transformers + DeepSpeed 
+   - modelcreate.py                 # Script to consolidate and save checkpoint for inference 
+   - inference.py                   # Inference script to generate text from fine-tuned model 
    - README.txt                     # This guide
 
 Preparing the Data
