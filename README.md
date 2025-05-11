@@ -67,6 +67,7 @@ Edit deepspeed_config.json to tune DeepSpeed's Zero Redundancy Optimizer (ZeRO) 
 {
   "zero_optimization":  
     {  
+    
       "stage": 3,  
       "stage3_gather_16bit_weights_on_model_save": true,  
       "stage3_param_persistence_threshold": 0  
