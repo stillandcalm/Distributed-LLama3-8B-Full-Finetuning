@@ -1,9 +1,9 @@
-# – LLama3-8B Full Fine-Tuning with DeepSpeed
+# LLama3-8B Full Fine-Tuning with DeepSpeed
 
 Infra used: runpod.io
 Used two GPU nodes in the cluster. 8 GPUs per node.
 
-# H2 - Overview
+## Overview
 This guide walks you through the process of performing full fine-tuning of the LLaMA-3-8B language model on multiple GPU machines using DeepSpeed. You will learn how to:
 1. Prepare your environment and dependencies.
 2. Organize and preprocess your training data.
@@ -13,7 +13,7 @@ This guide walks you through the process of performing full fine-tuning of the L
 6. Package the fine-tuned model for inference.
 7. Run inference with the trained model.
 
-# H2 - Prerequisites
+## Prerequisites
 
 Hardware: Multiple machines with CUDA‑enabled GPUs and inter‑node networking (e.g., 2+ nodes, each with N GPUs).
 SSH: Passwordless SSH access between nodes using an OpenSSH hostfile.
@@ -29,7 +29,7 @@ Dependencies: Install via pip:
 
 pip install deepspeed transformers datasets accelerate
 
-# H2 - Repository Structure
+## Repository Structure
 
 LLama3-8B-Full-Finetuning/
    - deepspeed_config.json          # DeepSpeed optimization settings 
@@ -40,7 +40,7 @@ LLama3-8B-Full-Finetuning/
    - inference.py                   # Inference script to generate text from fine-tuned model 
    - README.txt                     # This guide
 
-# H2 - Preparing the Data
+## Preparing the Data
 
 Your training dataset (train.jsonl) must be a JSON Lines file where each line is a JSON object containing the fields your tokenize_fn expects. By default, train.py uses fields input, trace, and answer:
 
@@ -48,19 +48,19 @@ Your training dataset (train.jsonl) must be a JSON Lines file where each line is
 
 Feel free to adjust the tokenize_fn in train.py if your data uses different keys.
 
-# H2 - Configuring Multi-node Training
+## Configuring Multi-node Training
 
-# H4 - Hostfile
+## Hostfile
 
 Create a file named hostfile listing each node and its available GPU slots. Example:
 
-# hostfile
+hostfile
 node1.example.com slots=8
 node2.example.com slots=8
 
 Ensure SSH key‑based authentication is set up so you can ssh nodeX without a password.
 
-# H2 - DeepSpeed Configuration
+## DeepSpeed Configuration
 
 Edit deepspeed_config.json to tune DeepSpeed's Zero Redundancy Optimizer (ZeRO) and FP16 settings. A typical config looks like:
 
@@ -77,7 +77,7 @@ Edit deepspeed_config.json to tune DeepSpeed's Zero Redundancy Optimizer (ZeRO) 
 
 Refer to DeepSpeed documentation for advanced options.
 
-Launching Distributed Training:
+## Launching Distributed Training
 
 Use the DeepSpeed launcher to start training across all nodes and GPUs:
 
@@ -103,7 +103,7 @@ $ deepspeed \
 
 Check the console logs to verify all nodes are participating.
 
-Checkpointing and Resuming:
+## Checkpointing and Resuming
 
 DeepSpeed automatically saves checkpoints under output/checkpoint-<step>. To resume from a checkpoint:
 
@@ -114,7 +114,7 @@ $ deepspeed --hostfile hostfile \
 
 Adjust <step> to the desired checkpoint number.
 
-Packaging the Model for Inference:
+## Packaging the Model for Inference
 
 After training completes, consolidate the sharded weights and tokenizer into a single folder for inference using modelcreate.py:
 $ python modelcreate.py
@@ -124,14 +124,14 @@ Load output/checkpoint-<last>
 Save a safe-serialized model in inference-llama3-8b/
 Copy the tokenizer files alongside 
 
-Running Inference:
+## Running Inference
 
 Use inference.py to test your fine-tuned model.
 $ python inference.py
 
 By default, it loads inference-llama3-8b and runs a sample prompt (What is 23 + 58?). Customize the prompt or integrate this script into your application.
 
-Troubleshooting
+## Troubleshooting
 
 1. Out of Memory: Reduce per_device_train_batch_size or enable gradient checkpointing (already on by default).
 2. Node Communication Errors: Verify SSH connectivity and firewall settings.
