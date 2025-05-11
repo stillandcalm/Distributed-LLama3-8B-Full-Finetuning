@@ -65,15 +65,15 @@ Ensure SSH key‑based authentication is set up so you can ssh nodeX without a p
 Edit deepspeed_config.json to tune DeepSpeed's Zero Redundancy Optimizer (ZeRO) and FP16 settings. A typical config looks like:
 
 {
-  "zero_optimization": {
-    "stage": 3,
-    "stage3_gather_16bit_weights_on_model_save": true,
-    "stage3_param_persistence_threshold": 0
-  },
-  "train_batch_size": "auto",
-  "gradient_accumulation_steps": "auto",
-  "fp16": { "enabled": true }
-}
+  "zero_optimization": {  
+    "stage": 3,  
+    "stage3_gather_16bit_weights_on_model_save": true,  
+    "stage3_param_persistence_threshold": 0  
+  },  
+  "train_batch_size": "auto",  
+  "gradient_accumulation_steps": "auto",  
+  "fp16": { "enabled": true }  
+}  
 
 Refer to DeepSpeed documentation for advanced options.
 
