@@ -1,4 +1,4 @@
-LLama3-8B Full Fine-Tuning with DeepSpeed
+# H1 – LLama3-8B Full Fine-Tuning with DeepSpeed
 
 Infra used: runpod.io
 Used two GPU nodes in the cluster. 8 GPUs per node.
