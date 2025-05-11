@@ -3,7 +3,7 @@
 Infra used: runpod.io
 Used two GPU nodes in the cluster. 8 GPUs per node.
 
-Overview
+# H2 - Overview
 This guide walks you through the process of performing full fine-tuning of the LLaMA-3-8B language model on multiple GPU machines using DeepSpeed. You will learn how to:
 1. Prepare your environment and dependencies.
 2. Organize and preprocess your training data.
@@ -13,7 +13,7 @@ This guide walks you through the process of performing full fine-tuning of the L
 6. Package the fine-tuned model for inference.
 7. Run inference with the trained model.
 
-Prerequisites
+# H2 - Prerequisites
 
 Hardware: Multiple machines with CUDA‑enabled GPUs and inter‑node networking (e.g., 2+ nodes, each with N GPUs).
 SSH: Passwordless SSH access between nodes using an OpenSSH hostfile.
@@ -29,7 +29,7 @@ Dependencies: Install via pip:
 
 pip install deepspeed transformers datasets accelerate
 
-Repository Structure
+# H2 - Repository Structure
 
 LLama3-8B-Full-Finetuning/
    - deepspeed_config.json          # DeepSpeed optimization settings 
@@ -40,7 +40,7 @@ LLama3-8B-Full-Finetuning/
    - inference.py                   # Inference script to generate text from fine-tuned model 
    - README.txt                     # This guide
 
-Preparing the Data
+# H2 - Preparing the Data
 
 Your training dataset (train.jsonl) must be a JSON Lines file where each line is a JSON object containing the fields your tokenize_fn expects. By default, train.py uses fields input, trace, and answer:
 
@@ -48,9 +48,9 @@ Your training dataset (train.jsonl) must be a JSON Lines file where each line is
 
 Feel free to adjust the tokenize_fn in train.py if your data uses different keys.
 
-Configuring Multi-node Training
+# H2 - Configuring Multi-node Training
 
-Hostfile
+# H4 - Hostfile
 
 Create a file named hostfile listing each node and its available GPU slots. Example:
 
@@ -60,7 +60,7 @@ node2.example.com slots=8
 
 Ensure SSH key‑based authentication is set up so you can ssh nodeX without a password.
 
-DeepSpeed Configuration:
+# H2 - DeepSpeed Configuration
 
 Edit deepspeed_config.json to tune DeepSpeed's Zero Redundancy Optimizer (ZeRO) and FP16 settings. A typical config looks like:
 
